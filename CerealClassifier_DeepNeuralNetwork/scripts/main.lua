@@ -16,14 +16,13 @@ local dnn = MachineLearning.DeepNeuralNetwork.create()
 
 -- Create a text decoration for the presentation in the viewer
 local textDeco = View.TextDecoration.create()
-textDeco:setSize(8)
-textDeco:setPosition(3, 8)
-textDeco:setColor(0, 255, 0)
+textDeco:setSize(8):setPosition(3, 8):setColor(0, 255, 0)
 --End of Global Scope-----------------------------------------------------------
 
 --Start of Function and Event Scope---------------------------------------------
 
--- Load the images in the resources/images folder and return an array
+---Load the images in the resources/images folder and return an array
+---@return Image[]
 local function loadImages()
   local flakeImage = Image.load('resources/images/corn_flakes.png')
   local puffImage = Image.load('resources/images/oat_squares.png')
@@ -31,7 +30,10 @@ local function loadImages()
   return {flakeImage, puffImage, branImage}
 end
 
--- Show the image in the viewer and also display the predicted label and the confidence of the prediction
+---Show the image in the viewer and also display the predicted label and the confidence of the prediction
+---@param image Image
+---@param label string
+---@param confidence float
 local function showResultInViewer(image, label, confidence)
   viewer:clear()
   viewer:addImage(image)
